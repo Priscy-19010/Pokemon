@@ -10,15 +10,18 @@ export default function Home(){
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh", 
-        }} className=''>
+        }}>
 
-            <div className="flex items-center p-10 h-full font-bold text-4xl w-150 text-[#F4C430]">
-                <p className=''>Come with us to discover your favourite pokemons</p>
-                <p>
-                    <Link to='/pokemons'>
-                    <IoSearch />
-                    </Link>
+            <div className="flex items-center justify-between p-6 sm:p-10 h-full font-bold text-[#F4C430]">
+                
+                <p className="text-2xl sm:text-3xl md:text-4xl w-full sm:w-3/4 md:w-2/3 lg:w-1/2 leading-snug">
+                    Come with us to discover your favourite pokemons
                 </p>
+
+                <Link to='/pokemons'>
+                    <IoSearch className="text-3xl sm:text-4xl md:text-5xl shrink-0 hover:opacity-75 transition-opacity" />
+                </Link>
+
             </div>
         </div>
     )

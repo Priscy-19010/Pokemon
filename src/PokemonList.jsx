@@ -6,23 +6,21 @@ import PokemonCard from "./PokemonCard";
 import Search from "./Search";
 
 export default function PokemonList(){
-    const { pokemon, loading, search, setSearch } =
-    useContext(PokemonContext);
+    const { pokemon, loading, search, setSearch } = useContext(PokemonContext);
 
-    console.log("pokemon:", pokemon)
-
-    if (loading) return <p>Loading...</p>
-    if (pokemon.length === 0) return <p>No pokemon found</p>
+    if (loading) return <p className="text-center mt-10">Loading...</p>
+    if (pokemon.length === 0) return <p className="text-center mt-10">No pokemon found</p>
 
     const filteredPokemon = pokemon.filter((poke) =>
-    poke.name.toLowerCase().includes(search.toLowerCase())
+        poke.name.toLowerCase().includes(search.toLowerCase())
     );
 
     return(
-        <div>
-            <div className=" flex flex-col gap-3">
+        <div className="max-w-4xl mx-auto px-4 py-6">
+            <div className="flex flex-col gap-4">
 
-                <div className="text-2xl">
+                {/* Title */}
+                <div className="text-2xl text-center sm:text-left">
                     <p>20 of your favourite pokemons</p>
                 </div>
 
@@ -30,12 +28,15 @@ export default function PokemonList(){
                     <Search />
                 </div>
 
-                <div className="">
+                <div>
                     <Link to='/'>
-                    <button className="flex items-center gap-4 p-2 border-2 border-[#F4C430] rounded-2xl text-base hover:bg-[#F4C430] hover:text-[#060B19]"> <FaArrowLeft /> Home</button>
+                        <button className="flex items-center gap-4 p-2 border-2 border-[#F4C430] rounded-2xl text-base hover:bg-[#F4C430] hover:text-[#060B19]">
+                            <FaArrowLeft /> Home
+                        </button>
                     </Link>
                 </div>
-                <div className="text-xl flex flex-col gap-2 p-1 border-b-2 border-[#F4C430]">
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 border-b-2 border-[#F4C430] pb-4 justify-center">
                     {
                         filteredPokemon.map((poke, index) => (
                             <PokemonCard
@@ -45,7 +46,7 @@ export default function PokemonList(){
                         ))
                     }
                 </div>
-                
+
             </div>
         </div>
     )
