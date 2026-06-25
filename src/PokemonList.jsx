@@ -19,7 +19,6 @@ export default function PokemonList(){
         <div className="max-w-4xl mx-auto px-4 py-6">
             <div className="flex flex-col gap-4">
 
-                {/* Title */}
                 <div className="text-2xl text-center sm:text-left">
                     <p>20 of your favourite pokemons</p>
                 </div>
@@ -36,17 +35,24 @@ export default function PokemonList(){
                     </Link>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 border-b-2 border-[#F4C430] pb-4 justify-center">
-                    {
-                        filteredPokemon.map((poke, index) => (
-                            <PokemonCard
-                            key={index}
-                            PokeName={poke.name}
-                            />
-                        ))
-                    }
-                </div>
-
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 border-b-2 border-[#F4C430] pb-4">
+                {
+                filteredPokemon.length === 0 ? (
+                    <div className="col-span-full text-center py-10">
+                        <p className="text-2xl mb-2">😕</p>
+                        <p className="text-lg font-bold">No pokemon found</p>
+                        <p className="text-sm mt-1">Try searching for a different name</p>
+                    </div>
+                ) : (
+                    filteredPokemon.map((poke, index) => (
+                        <PokemonCard
+                        key={index}
+                        PokeName={poke.name}
+                        />
+                    ))
+                )
+                }
+            </div>
             </div>
         </div>
     )

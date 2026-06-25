@@ -10,6 +10,7 @@ export default function Search(){
             value={search}
             placeholder="Search for your pokemon..."
             onChange={(e) => setSearch(e.target.value)}
+            className=" border-2 p-2 rounded-xl"
             />
         </div>
     )
